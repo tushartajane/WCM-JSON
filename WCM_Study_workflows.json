@@ -248,6 +248,7 @@
 					"caption": "Date/Time Drawn",
 					"type": "datetime",
 					"showInOverviewIf": "useShowIf",
+					"defaultValue": "field:visit.visitDate",
 					"optional": true,
 					"showIf": {
 						"op": "AND",
@@ -749,7 +750,28 @@
 							"value": "'Fluid'"
 						}]
 					}
-				}, {
+				},
+				{
+					"name": "specimen.extensionDetail.attrsMap.ST26",
+					"caption": "IsDerived",
+					"type": "text",
+					"showInOverviewIf": "specimen.collectionStatus == 'Pending'",
+					"optional": true,
+					"defaultValue": "True",
+					"showIf": {
+						"op": "AND",
+						"rules": [{
+							"field": "specimen.lineage",
+							"op": "==",
+							"value": "'Derived'"
+						}, {
+							"field": "specimen.specimenClass",
+							"op": "==",
+							"value": "'Tissue'"
+						}]
+					}
+				},
+				 {
 					"name": "specimen.extensionDetail.attrsMap.DD20",
 					"caption": "Tissue Status",
 					"type": "dropdown",
@@ -974,11 +996,19 @@
 					"name": "specimen.extensionDetail.attrsMap.ST16",
 					"baseField": "specimen.extensionDetail.attrsMap.ST16",
 					"width": "90px"
-				}, {
+				},
+				{
 					"name": "specimen.extensionDetail.attrsMap.ST17",
 					"baseField": "specimen.extensionDetail.attrsMap.ST17",
 					"width": "90px"
-				}, {
+				},
+				{
+					"name": "specimen.extensionDetail.attrsMap.ST26",
+					"baseField": "specimen.extensionDetail.attrsMap.ST26",
+					"width": "90px",
+					"hideColumn" : true
+				},
+				 {
 					"name": "specimen.storageLocation",
 					"caption": "Location",
 					"type": "storage-position",
@@ -1257,12 +1287,14 @@
 		"data": {
 			"specimen": {
 				"rules": [{
-						"criteria": "#specimen.initialQty != null && #specimen.lineage == 'Derived' && #specimen.specimenClass == 'Tissue'",
+						"init": "#specimen.extensionDetail.getAttrsMap()",
+						"criteria": "#specimen.extensionDetail.attrsMap['ST26'] == 'True' && #specimen.lineage == 'Derived' && #specimen.specimenClass == 'Tissue'",
 						"format": "%PR_SPEC_LABEL%_%SP_TYPE%%SP_TYPE_ABBR_UID(1, output_one, primary_specimen)%"
 					},
+
 					{
 						"init": "#specimen.extensionDetail.getAttrsMap()",
-						"criteria": "#specimen.initialQty == null && #specimen.lineage == 'Derived' && #specimen.specimenClass == 'Tissue'",
+						"criteria": "#specimen.extensionDetail.attrsMap['ST26'] == null && #specimen.lineage == 'Derived' && #specimen.specimenClass == 'Tissue'",
 						"format": "%SYS_UID%"
 					},
 					{
