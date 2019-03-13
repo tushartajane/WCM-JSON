@@ -803,10 +803,11 @@
 					}
 				}, {
 					"name": "specimen.extensionDetail.attrsMap.NT21",
-					"caption": "Length (cm)",
+					"caption": "D1 (cm)",
 					"type": "text",
 					"pattern": "^([0-9]*|[0-9]+\\.?[0-9]+)$",
 					"showInOverviewIf": "useShowIf",
+					"defaultValue": "1",
 					"optional": true,
 					"showIf": {
 						"op": "AND",
@@ -822,10 +823,11 @@
 					}
 				}, {
 					"name": "specimen.extensionDetail.attrsMap.NT22",
-					"caption": "Width (cm)",
+					"caption": "D2 (cm)",
 					"type": "text",
 					"pattern": "^([0-9]*|[0-9]+\\.?[0-9]+)$",
 					"showInOverviewIf": "useShowIf",
+					"defaultValue": "1",
 					"optional": true,
 					"showIf": {
 						"op": "AND",
@@ -841,10 +843,11 @@
 					}
 				}, {
 					"name": "specimen.extensionDetail.attrsMap.NT23",
-					"caption": "Height (cm)",
+					"caption": "D3 (cm)",
 					"type": "text",
 					"pattern": "^([0-9]*|[0-9]+\\.?[0-9]+)$",
 					"showInOverviewIf": "useShowIf",
+					"defaultValue": "1",
 					"optional": true,
 					"showIf": {
 						"op": "AND",
@@ -1143,20 +1146,20 @@
 					}, {
 						"name": "specimen.qtyPerAliquot",
 						"baseField": "specimen.initialQty",
-						"caption": "Weight",
+						"caption": "Weight (gm)",
 						"width": "110px"
 					}, {
 						"name": "specimen.extensionDetail.attrsMap.NT21",
 						"baseField": "specimen.extensionDetail.attrsMap.NT21",
-						"width": "110px"
+						"width": "100px"
 					}, {
 						"name": "specimen.extensionDetail.attrsMap.NT22",
 						"baseField": "specimen.extensionDetail.attrsMap.NT22",
-						"width": "110px"
+						"width": "100px"
 					}, {
 						"name": "specimen.extensionDetail.attrsMap.NT23",
 						"baseField": "specimen.extensionDetail.attrsMap.NT23",
-						"width": "110px"
+						"width": "100px"
 					}, {
 						"name": "specimen.storageLocation",
 						"baseField": "specimen.storageLocation",
